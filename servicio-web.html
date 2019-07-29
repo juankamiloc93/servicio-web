@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Consulte un país</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="app" class="container mt-5">
+        <div class="col-6">            
+                <input class="form-control my-2" placeholder="Ingrese ISO del país" v-model="iso" type="text">                
+                <small  v-if="iso.length!=3" class="text-danger d-block">El ISO debe ser de 3 carácteres</small>                
+            <button class="btn btn-primary my-3" :disabled="iso.length!=3" @click="getPais(iso)">Consultar</button>       
+        
+            <table v-if="nombre" class="table">
+                <tr>
+                    <td><strong>Nombre</strong></td>
+                    <td>{{nombre}}</td>
+                </tr>
+                <tr>
+                    <td><strong>dominio</strong></td>
+                    <td>{{dominio}}</td>
+                </tr>
+                <tr>
+                    <td><strong>código de llamada</strong></td>
+                    <td>{{codigoLlamada}}</td>
+                </tr>
+                <tr>
+                    <td><strong>capital</strong>l</td>
+                    <td>{{capital}}</td>
+                </tr>
+                <tr>
+                    <td><strong>región</strong></td>
+                    <td>{{region}}</td>
+                </tr>
+                <tr>
+                    <td><strong>subregión</strong></td>
+                    <td>{{subregion}}</td>
+                </tr>
+                <tr>
+                    <td><strong>población</strong></td>
+                    <td>{{poblacion}}</td>
+                </tr>
+                <tr>
+                    <td><strong>zona horaria</strong></td>
+                    <td>{{zonaHoraria}}</td>
+                </tr>                
+               
+            </div>
+    </div>
+
+    
+     
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script> 
+    <script src="servicio-web.js"></script>
+</body>
+</html>
