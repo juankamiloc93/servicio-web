@@ -14,8 +14,9 @@
     <div id="app" class="container mt-5">
         <div class="col-6">            
                 <input class="form-control my-2" placeholder="Ingrese ISO del país" v-model="iso" type="text">                
-                <small  v-if="iso.length!=3" class="text-danger d-block">El ISO debe ser de 3 carácteres</small>                
-            <button class="btn btn-primary my-3" :disabled="iso.length!=3" @click="getPais(iso)">Consultar</button>       
+                <small v-if="iso.length!=3" class="text-danger d-block">El ISO debe ser de 3 carácteres</small>
+                <small v-if="!expresion.test(iso)" class="text-danger d-block">El ISO solo peude tener carácteres alfanúmericos</small>                
+            <button class="btn btn-primary my-3" :disabled="iso.length!=3 || !expresion.test(iso)" @click="getPais(iso)">Consultar</button>       
         
             <table v-if="nombre" class="table">
                 <tr>

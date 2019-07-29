@@ -1,6 +1,7 @@
 const app = new Vue({
     el: '#app',
-    data: {        
+    data: {
+        expresion: /[A-Za-z0-9]{3}/,       
         nombre: '',
         dominio: '',
         codigoLlamada: '',
